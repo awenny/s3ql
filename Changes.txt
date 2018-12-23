@@ -1,10 +1,22 @@
-UNRELEASED CHANGES
+2018-11-06, S3QL 2.32
 
   * Fixed a potential bug in s3qlrm that would probably lead to a
     filesystem crash (hasn't actually been observed though).
 
   * Clarified installation instructions: S3QL requires the official
     systemd Python module, not the (third-party) module on PyPi.
+
+  * Fixed occasional crashes with a "dugong.StateError" exception.
+    Thanks to Roger Gammans for extensive testing!
+
+  * mount.s3ql and fsck.s3ql got a new `--keep-cache` option. If this
+    is specified, locally cached data will not be removed on unmount
+    (or after fsck) so that it can be re-used if the file system is
+    mounted again on the same system without having been mounted
+    elsewhere.
+
+  * S3QL now considers all SSL-related errors as temporary and
+    automatically retries (instead of bailing out).
 
 2018-10-08, S3QL 2.31
 
